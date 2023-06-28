@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset='utf-8'>
+  <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+  <title>bus</title>
+  <meta name='viewport' content='width=device-width, initial-scale=1'>
+</head>
+<body>
+  <div class="container">
+    <div class="top">
+      <h1>METRO</h1>
+    </div>
+    <div class="middle">
+      <h1>ADULT ($2.75)</h1>
+    </div>
+    <div class="bottom">
+      <h1 id="date"></h1>
+    </div>
+
+  </div>
+  <script>
+  n =  new Date();
+  y = n.getFullYear();
+  m = n.getMonth() + 1;
+  if (m<10) {m = '0' + m};
+  d = n.getDate();
+  if (d<10) {d = '0' + d};
+  h = n.getHours();
+  if (h<10) {h = '0' + h};
+  min = n.getMinutes();
+  if (min<10) {min = '0' + min};
+
+  document.getElementById("date").innerHTML = n
+  // m + "/" + d + "/" + y + ' ' + h + ':' + min;
+  </script>
+</body>
+</html>
