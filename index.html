@@ -16,23 +16,50 @@
     </div>
     <div class="bottom">
       <h1 id="date"></h1>
+      <h1>Expiration Date & Time</h1>
     </div>
 
   </div>
   <script>
-  n =  new Date();
-  y = n.getFullYear();
-  m = n.getMonth() + 1;
+  let n = new Date();
+  let time = n.getTime();
+  let updatedTIme = new Date(time + 1 * 60 * 60 * 1000);
+  y = updatedTIme.getFullYear();
+  m = updatedTIme.getMonth() + 1;
   if (m<10) {m = '0' + m};
-  d = n.getDate();
+  d = updatedTIme.getDate();
   if (d<10) {d = '0' + d};
-  h = n.getHours();
+  h = updatedTIme.getHours();
+  var ampm = (h >= 12) ? "PM" : "AM";
+  h = h%12;
   if (h<10) {h = '0' + h};
-  min = n.getMinutes();
+  min = updatedTIme.getMinutes();
   if (min<10) {min = '0' + min};
 
-  document.getElementById("date").innerHTML = n
-  // m + "/" + d + "/" + y + ' ' + h + ':' + min;
+  document.getElementById("date").innerHTML = m + "/" + d + "/" + y + ' ' + h + ':' + m + ' ' + ampm;
   </script>
+  <style>
+    html, body {
+        height: 100%;
+    }
+    .container{
+      /* display: flex;
+      flex-direction: column;
+      row-gap: 5px;
+      justify-content: space-between;
+      height: 100%; */
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      height: 100%;
+    }
+    h1 {
+      text-align: center;
+    }
+    .top, .middle, .bottom {
+      background-color: yellow;
+    }
+
+  </style>
 </body>
 </html>
