@@ -13,11 +13,16 @@
     </div>
     <div class="middle">
       <img id="icon" src="icon.png" alt="Icon">
+      <img id="icon1" src="icon.png" alt="Icon">
       <h1>ADULT ($2.75)</h1>
     </div>
     <div class="bottom">
       <h1 id="date"></h1>
-      <h1>Expiration Date & Time</h1>
+      <h2>Expiration Date & Time</h2>
+    </div>
+    <div class="qrContainer">
+      <h3 class="show">SHOW <br>CODE</h3>
+      <div class="qrCodeContainer"><img id="qr" src="qr.png" alt="Icon"></div>
     </div>
 
   </div>
@@ -33,7 +38,6 @@
   h = updatedTIme.getHours();
   var ampm = (h >= 12) ? "PM" : "AM";
   h = h%12;
-  if (h<10) {h = '0' + h};
   min = updatedTIme.getMinutes();
   if (min<10) {min = '0' + min};
 
@@ -43,31 +47,43 @@
   </script>
   <style>
     html, body {
-        height: 100%;
+        height: 103%;
         width: 100%;
         margin: 0;
         font-family: Arial, Helvetica, sans-serif;
+        user-select: none;
     }
     .container{
-      row-gap: 5px;
+      row-gap: 3px;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-      height: 100%;
+      height: 103%;
       width: 100%;
     }
-    h1 {
+    h1, h2 {
       text-align: center;
       color: white;
-      margin: 2px;
     }
     .top, .bottom, .middle{
-      flex-grow: 1;
+
       display: flex;
       flex-direction: column;
-      justify-content: center;
+      justify-content: space-evenly;
     }
-
+    .top {
+      flex-grow: 1.5;
+      font-size: 1.5rem;
+    }
+    .bottom h1 {
+      font-size: 2.3em;
+    }
+    .bottom h2 {
+      font-size: 1.7em;
+    }
+    .bottom {
+      flex-grow: .5;
+    }
     .top, .bottom {
       background: linear-gradient(
         to top,
@@ -76,13 +92,34 @@
         #ffd474 50%,
         #ffd474 100%
       );
-      /* background-color: #ffcc00; */
 
     }
+    .show {
+      position: absolute;
+      transform: translate(-120%, 80%);
+    }
+    .qrContainer {
+      position: absolute;
+      bottom: 150px;
+      right: 5px;
+    }
+    .qrCodeContainer {
+      background-color: white;
+      width: 100px;
+      height: 100px;
+    }
+    #qr {
+      position: absolute;
+      width: 90px;
+      height: 90px;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
 
+    }
     .middle {
-      /* background-color: #2550ff; */
-      flex-grow: 5;
+      font-size: 1.5rem;
+      flex-grow: 3;
       background: linear-gradient(
         to top,
         #0070c6 0%,
@@ -95,20 +132,30 @@
     }
 
     #icon {
-      position: fixed;
+      position: absolute;
       bottom: 0;
       left: 0;
-      animation: flowIcon 4s linear infinite;
+      animation: flowIcon 4.6s linear infinite;
+      width: 100px;
+      opacity: 50%;
+    }
+
+    #icon1 {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      animation: flowIcon 4.6s linear infinite;
+      animation-delay: 2.3s;
       width: 100px;
       opacity: 50%;
     }
 
     @keyframes flowIcon {
       0% {
-        transform: translate(0, 0);
+        transform: translate(calc(-30vw), calc(20vh));
       }
       100% {
-        transform: translate(calc(100vw - 100px), calc(-100vh + 100px));
+        transform: translate(calc(100vw), calc(-60vh));
       }
     }
 
