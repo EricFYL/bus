@@ -11,12 +11,12 @@
     <div class="top">
       <h1>METRO</h1>
     </div>
-    <div class="middle">
+    <div class="middle" bcm="blue" onclick="select(event)">
       <img id="icon" src="icon.png" alt="Icon">
       <img id="icon1" src="icon.png" alt="Icon">
       <h1>ADULT ($2.75)</h1>
     </div>
-    <div class="bottom">
+    <div class="bottom" bcb="yellow" onclick="select(event)">
       <h1 id="date"></h1>
       <h2>Expiration Date & Time</h2>
     </div>
@@ -44,6 +44,21 @@
   document.getElementById("date").innerHTML = m + "/" + d + "/" + y + ' ' + h + ':' + m + ' ' + ampm;
   const icon = document.getElementById("icon");
   icon.classList.add("flow-animation");
+    function select(event) {
+      if (event.target.getAttribute("bcb") === 'yellow') {
+        event.target.style.background = "linear-gradient(to top, #04f300 0%, #04f300 50%,#46ff43 50%, #46ff43 100%)";
+        event.target.attributes.bcb.value = 'green';
+      } else if (event.target.getAttribute("bcb") === 'green') {
+        event.target.style.background = "linear-gradient(to top, #fec343 0%, #fec343 50%,#ffd474 50%, #ffd474 100%)";
+        event.target.attributes.bcb.value = 'yellow';
+      } else if (event.target.getAttribute("bcm") === 'blue') {
+        event.target.style.background = "linear-gradient(to top, #04f300 0%, #04f300 50%,#46ff43 50%, #46ff43 100%)";
+        event.target.attributes.bcm.value = 'green';
+      } else if (event.target.getAttribute("bcm") === 'green') {
+        event.target.style.background = "linear-gradient(to top, #0070c6 0%, #0070c6 50%,#3f97d7 50%, #3f97d7 100%)";
+        event.target.attributes.bcm.value = 'blue';
+      }
+    }
   </script>
   <style>
     html, body {
